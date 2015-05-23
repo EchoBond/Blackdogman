@@ -25,9 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <s:form action="userAction.action?act=add" method="post">
-    <s:textfield label="添加的emp名字" labelposition="left" name="empName"/>
-    <s:textfield label="添加的dept名字" labelposition="left" name="deptName"/>
-    <s:submit value="添加"/>
+    <s:textfield label="用户名" labelposition="left" name="user.loginid"/>
+    <s:password label="密码" labelposition="left" name="user.loginpwd"/>
+    <s:textfield label="姓名" labelposition="left" name="user.name"/>
+    <s:submit value="注册"/>
    </s:form>
   </body>
 </html>

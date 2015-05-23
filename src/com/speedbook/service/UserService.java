@@ -4,6 +4,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.speedbook.dao.Dao;
+import com.speedbook.model.User;
 
 public class UserService {
 	Dao dao;
@@ -13,8 +14,20 @@ public class UserService {
 		dao=(Dao)bf.getBean("dao");
 		return dao;
 	}
-	public void add(){
+	public void AddUser(User user){
 		dao=getDao();
-		System.out.println("come£¡@");
+		dao.add(user);
+	}
+	public void DeleteUser(int id){
+		dao=getDao();
+		dao.delete(id);
+	}
+	public void UpdateUser(User user){
+		dao=getDao();
+		dao.update(user);
+	}
+	public void QueryUser(int id){
+		dao=getDao();
+		dao.Query(id);
 	}
 }

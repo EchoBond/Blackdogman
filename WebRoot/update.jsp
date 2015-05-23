@@ -25,8 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <s:form action="userAction.action?act=update" method="post">
-   		 <s:textfield label="修改的empId" labelposition="left" name="empId"/>
-    	 <s:textfield label="修改的emp名字" labelposition="left" name="empName"/>
+   		<s:textfield label="需要修改的用户名" labelposition="left" name="user.loginid"/>
+    	<s:password label="新密码" labelposition="left" name="user.loginpwd"/>
+   	    <s:textfield label="新姓名" labelposition="left" name="user.name"/>
     <s:submit value="修改"/>
    </s:form>
   </body>
