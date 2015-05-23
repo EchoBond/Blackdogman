@@ -1,5 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.speedbook.dao.*,org.springframework.beans.factory.BeanFactory,org.springframework.context.support.ClassPathXmlApplicationContext;" %>
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'successPage.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,10 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-	  <h1>Hello world!</h1>
-	  <a href="userAction.action">跳转呗</a>
+    <h1>Success Page!</h1>
   </body>
 </html>

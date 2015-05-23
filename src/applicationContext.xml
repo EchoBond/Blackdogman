@@ -39,7 +39,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	<!-- 以上是hibernate的配置！！ -->
-	<bean id="logAspect" class="com.speedbook.logAspect.logAspect"/>		
-	<bean id="dao" class="com.speedbook.dao.dao"/>						 
+	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect"/>		
+	<bean id="dao" class="com.speedbook.dao.Dao"/>						 
 	<aop:aspectj-autoproxy/>	
 </beans>

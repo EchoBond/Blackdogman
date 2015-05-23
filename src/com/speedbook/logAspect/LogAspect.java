@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class logAspect {
+public class LogAspect {
 	@Pointcut("execution(* com.speedbook.dao.*.*(..))")
 	public void myPointcut(){}
 	

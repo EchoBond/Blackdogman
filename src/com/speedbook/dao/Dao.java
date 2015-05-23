@@ -9,7 +9,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.speedbook.model.User;
 
-public class dao {
+public class Dao {
 	private Configuration conf;
 	private ServiceRegistry serviceRegistry;
 	private SessionFactory sf;

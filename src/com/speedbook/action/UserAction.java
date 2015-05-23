@@ -1,18 +1,18 @@
-package com.speedbook.dao;
+package com.speedbook.action;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.speedbook.model.User;
+import com.opensymphony.xwork2.ActionSupport;
+import com.speedbook.dao.Dao;
 
-public class test {
-	public static void main(String[] args) {
+public class UserAction extends ActionSupport {
+	Dao dao;
+	@Override
+	public String execute() throws Exception {
 		BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
 		Dao dao=(Dao)bf.getBean("dao");
-		User user=new User();
-		user.setLoginid("bdm");
-		user.setLoginpwd("bdm");
-		user.setName("Blackdogman");
-		dao.dao(user);
+		return SUCCESS;
 	}
+	
 }
