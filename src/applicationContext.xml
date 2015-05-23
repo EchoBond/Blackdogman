@@ -8,7 +8,37 @@
 									 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
 									 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 									 http://www.springframework.org/schema/aop 
-									 http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+									 http://www.springframework.org/schema/aop/spring-aop-4.0.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306"></property>
+		<property name="username" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/speedbook/model/User.hbm.xml</value>
+				<value>com/speedbook/model/Loganderror.hbm.xml</value></list>
+		</property></bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 以上是hibernate的配置！！ -->
 	<bean id="logAspect" class="com.speedbook.logAspect.logAspect"/>		
 	<bean id="dao" class="com.speedbook.dao.dao"/>						 
 	<aop:aspectj-autoproxy/>	
