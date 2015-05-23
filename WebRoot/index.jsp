@@ -22,8 +22,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <%BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
-		dao dao=(dao)bf.getBean("dao");
-		dao.dao(); %>
   </body>
 </html>
