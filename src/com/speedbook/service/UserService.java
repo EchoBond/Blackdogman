@@ -7,9 +7,14 @@ import com.speedbook.dao.Dao;
 
 public class UserService {
 	Dao dao;
-	public void add(){
+	public Dao getDao(){
+		Dao dao;
 		BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
-		Dao dao=(Dao)bf.getBean("dao");
+		dao=(Dao)bf.getBean("dao");
+		return dao;
+	}
+	public void add(){
+		dao=getDao();
 		System.out.println("come£¡@");
 	}
 }
