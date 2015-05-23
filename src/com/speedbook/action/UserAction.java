@@ -4,14 +4,15 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.speedbook.dao.Dao;
+import com.speedbook.service.UserService;
 
 public class UserAction extends ActionSupport {
-	Dao dao;
+	UserService userService;
 	@Override
 	public String execute() throws Exception {
 		BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
-		Dao dao=(Dao)bf.getBean("dao");
+		userService=(UserService)bf.getBean("userService");
+		userService.add();
 		return SUCCESS;
 	}
 	

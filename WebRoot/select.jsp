@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.speedbook.dao.*,org.springframework.beans.factory.BeanFactory,org.springframework.context.support.ClassPathXmlApplicationContext;" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	  <h1>Hello world!</h1>
-	  <a href="userAction.action">跳转呗</a>
+    <s:form action="userAction.action?act=query" method="post">
+    	<s:textfield label="输入查询的ID" labelposition="left" name="id"/>
+    	<s:submit  value="提交" labelposition="left" />
+    </s:form>
   </body>
 </html>
