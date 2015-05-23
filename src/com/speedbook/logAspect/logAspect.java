@@ -3,15 +3,18 @@ package com.speedbook.logAspect;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class logAspect {
+	@Pointcut("execution(* com.speedbook.dao.*.*(..))")
+	public void myPointcut(){}
 	
-	@Before("execution(* com.speedbook.dao.*.*(..))")
+	@Before(value="myPointcut()")
 	public void logBefore(){
 		System.out.println("before");
 	}
-	@After("execution(* com.speedbook.dao.*.*(..))")
+	@After(value="myPointcut()")
 	public void after(){
 		System.out.println("after");
 	}
