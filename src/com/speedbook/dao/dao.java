@@ -6,8 +6,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.speedbook.model.User;
 
@@ -25,20 +23,15 @@ public class dao {
 		sess=sf.openSession();
 		tx=sess.beginTransaction();
 	}
-	public void dao(){
-		getSession();
-		BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
-		User user =(User)bf.getBean("user");
-		user.setLoginid("admin");
-		user.setLoginpwd("admin");
-		user.setName("bdm");
-		sess.save(user);
-		distroy();
-	}
 	//执行并销毁链接
 	public void distroy(){
 		tx.commit();
 		sess.close();
 		sf.close();
+	}
+	public void dao(User user){
+		getSession();
+		sess.save(user);
+		distroy();
 	}
 }
