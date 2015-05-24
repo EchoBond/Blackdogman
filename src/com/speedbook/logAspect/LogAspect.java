@@ -1,6 +1,8 @@
 package com.speedbook.logAspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -21,6 +23,9 @@ public class LogAspect {
 	
 	public void afterReturning(){}
 	
-	public void afterThrowing(){}
-	
+	@AfterThrowing(value="myPointcut()",throwing="e")
+	public void afterThrowing(JoinPoint joinPoint, Exception e){
+		String methodName = joinPoint.getSignature().getName();
+		String error="The method " + methodName + " occurs excetion:" + e;
+	}
 }

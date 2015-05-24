@@ -40,7 +40,9 @@
 	
 	<!-- 以上是hibernate的配置！！ -->
 	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect"/>		
-	<bean id="dao" class="com.speedbook.dao.Dao"/>		
-	<bean id="userService" class="com.speedbook.service.UserService"/>				 
+	<bean id="userDao" class="com.speedbook.dao.UserDao"/>		
+	<bean id="userService" class="com.speedbook.service.UserService"/>		
+	<bean id="loganderrorDao" class="com.speedbook.dao.LoganderrorDao"/>		 
+	<bean id="loganderrorService" class="com.speedbook.service.LoganderrorService"/>
 	<aop:aspectj-autoproxy/>	
 </beans>

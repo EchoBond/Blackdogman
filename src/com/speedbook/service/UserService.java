@@ -3,15 +3,15 @@ package com.speedbook.service;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.speedbook.dao.Dao;
+import com.speedbook.dao.UserDao;
 import com.speedbook.model.User;
 
 public class UserService {
-	Dao dao;
-	public Dao getDao(){
-		Dao dao;
+	UserDao dao;
+	public UserDao getDao(){
+		UserDao dao;
 		BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
-		dao=(Dao)bf.getBean("dao");
+		dao=(UserDao)bf.getBean("userDao");
 		return dao;
 	}
 	public void AddUser(User user){
