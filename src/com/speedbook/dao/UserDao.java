@@ -40,7 +40,7 @@ public class UserDao {
 	}
 	
 	public boolean delete(int id) {
-		System.out.println("进入删除 id="+id);
+		getSession();
 		String sql="delete from User where id="+id;
 		Query query=sess.createQuery(sql);
 		if(query.executeUpdate()!=0){
@@ -52,6 +52,7 @@ public class UserDao {
 	}
 
 	public boolean update(User user) {
+		getSession();
 		String sql="update User set name='"+user.getName()+"' where id="+user.getId();
 		Query query=sess.createQuery(sql);
 		if(query.executeUpdate()!=0){
@@ -63,7 +64,7 @@ public class UserDao {
 	}
 
 	public List<User> Query(int id) {
-		System.out.println("进入查询 id="+id);
+		getSession();
 		String sql="FROM User WHERE id="+id;
 		Query query=sess.createQuery(sql);
 		List<User> list=query.list();

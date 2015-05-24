@@ -14,7 +14,7 @@ public class LoganderrorService {
 		dao=(LoganderrorDao)bf.getBean("loganderrorDao");
 		return dao;
 	}
-	public void AddUser(Loganderror loganderror){
+	public void AddLog(Loganderror loganderror){
 		dao=getDao();
 		dao.add(loganderror);
 	}

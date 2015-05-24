@@ -14,20 +14,24 @@ public class UserService {
 		dao=(UserDao)bf.getBean("userDao");
 		return dao;
 	}
-	public void AddUser(User user){
+	public String AddUser(User user){
 		dao=getDao();
 		dao.add(user);
+		return "Add "+user;
 	}
-	public void DeleteUser(int id){
+	public String DeleteUser(int id){
 		dao=getDao();
 		dao.delete(id);
+		return "Delete with id "+id;
 	}
-	public void UpdateUser(User user){
+	public String UpdateUser(User user){
 		dao=getDao();
 		dao.update(user);
+		return "Update "+user;
 	}
-	public void QueryUser(int id){
+	public String QueryUser(int id){
 		dao=getDao();
 		dao.Query(id);
+		return "Query with id "+id;
 	}
 }
