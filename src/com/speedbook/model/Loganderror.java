@@ -10,7 +10,8 @@ public class Loganderror implements java.io.Serializable {
 
 	private Integer id;
 	private String type;
-	private String log;
+	private String method;
+	private String vaule;
 	private String error;
 	private String date;
 
@@ -21,9 +22,11 @@ public class Loganderror implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Loganderror(String type, String log, String error, String date) {
+	public Loganderror(String type, String method, String vaule, String error,
+			String date) {
 		this.type = type;
-		this.log = log;
+		this.method = method;
+		this.vaule = vaule;
 		this.error = error;
 		this.date = date;
 	}
@@ -46,12 +49,20 @@ public class Loganderror implements java.io.Serializable {
 		this.type = type;
 	}
 
-	public String getLog() {
-		return this.log;
+	public String getMethod() {
+		return this.method;
 	}
 
-	public void setLog(String log) {
-		this.log = log;
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public String getVaule() {
+		return this.vaule;
+	}
+
+	public void setVaule(String vaule) {
+		this.vaule = vaule;
 	}
 
 	public String getError() {

@@ -13,8 +13,11 @@
         <property name="type" type="java.lang.String">
             <column name="type" length="200" />
         </property>
-        <property name="log" type="java.lang.String">
-            <column name="log" length="200" />
+        <property name="method" type="java.lang.String">
+            <column name="method" length="200" />
+        </property>
+        <property name="vaule" type="java.lang.String">
+            <column name="vaule" length="200" />
         </property>
         <property name="error" type="java.lang.String">
             <column name="error" length="200" />

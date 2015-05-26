@@ -35,7 +35,7 @@ public class LogAspect {
 		LoganderrorService logService=getLogService();
 		Loganderror loganderror=new Loganderror();
 		loganderror.setType("Log");
-		loganderror.setLog(log);
+		loganderror.setMethod(log);
 		loganderror.setError("none");
 		loganderror.setDate(new Date().toString());
 		logService.AddLog(loganderror);
@@ -50,7 +50,7 @@ public class LogAspect {
 		LoganderrorService logService=getLogService();
 		Loganderror loganderror=new Loganderror();
 		loganderror.setType("Error£¡");
-		loganderror.setLog(log);
+		loganderror.setMethod(log);
 		loganderror.setError(error);
 		loganderror.setDate(new Date().toString());
 		logService.AddLog(loganderror);
