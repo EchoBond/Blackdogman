@@ -20,9 +20,6 @@ public class UserDao {
 	private Transaction tx;
 	//用于获取hibernate链接
 	public void getSession(){
-		conf=new Configuration().configure();
-		serviceRegistry=new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
-		sf=conf.buildSessionFactory(serviceRegistry);
 		sess=sf.openSession();
 		tx=sess.beginTransaction();
 	}
@@ -70,4 +67,12 @@ public class UserDao {
 		List<User> list=query.list();
 		return list;
 	}
+	public SessionFactory getSf() {
+		return sf;
+	}
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
+	}
+	
+	
 }

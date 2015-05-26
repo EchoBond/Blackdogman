@@ -16,6 +16,9 @@
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url" value="jdbc:mysql://localhost:3306"></property>
 		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+		<!-- 居然这里没配驱动 -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -43,9 +46,13 @@
 	
 	<!-- 以上是hibernate的配置！！ -->
 	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect"/>		
-	<bean id="userDao" class="com.speedbook.dao.UserDao"/>		
+	<bean id="userDao" class="com.speedbook.dao.UserDao">
+		<property name="sf" ref="sessionFactory"></property>
+	</bean>		
 	<bean id="userService" class="com.speedbook.service.UserService"/>		
-	<bean id="loganderrorDao" class="com.speedbook.dao.LoganderrorDao"/>		 
+	<bean id="loganderrorDao" class="com.speedbook.dao.LoganderrorDao">
+		<property name="sf" ref="sessionFactory"></property>
+	</bean>		 
 	<bean id="loganderrorService" class="com.speedbook.service.LoganderrorService"/>
 	<aop:aspectj-autoproxy/>	
 	
