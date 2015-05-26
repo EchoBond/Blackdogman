@@ -17,7 +17,6 @@ public class UserAction extends ActionSupport {
 	int id;
 	@Override
 	public String execute() throws Exception {
-		userService=getUserService();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		act=request.getParameter("act");
 		if(act.equals("query"))
@@ -42,12 +41,6 @@ public class UserAction extends ActionSupport {
 	private void UpdateUser(User user){
 		userService.UpdateUser(user);
 	}
-	private UserService getUserService(){
-		UserService userService;
-		BeanFactory bf=new ClassPathXmlApplicationContext("applicationContext.xml");
-		userService=(UserService)bf.getBean("userService");
-		return userService;
-	}
 	
 	public User getUser() {
 		return user;
@@ -60,6 +53,12 @@ public class UserAction extends ActionSupport {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	public UserService getUserService() {
+		return userService;
 	}
 	
 	

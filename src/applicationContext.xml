@@ -45,15 +45,23 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	<!-- 以上是hibernate的配置！！ -->
-	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect"/>		
+	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect">
+	</bean>		
 	<bean id="userDao" class="com.speedbook.dao.UserDao">
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>		
-	<bean id="userService" class="com.speedbook.service.UserService"/>		
+	<bean id="userService" class="com.speedbook.service.UserService">
+		<property name="dao" ref="userDao"></property>
+	</bean>		
 	<bean id="loganderrorDao" class="com.speedbook.dao.LoganderrorDao">
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>		 
-	<bean id="loganderrorService" class="com.speedbook.service.LoganderrorService"/>
+	<bean id="loganderrorService" class="com.speedbook.service.LoganderrorService">
+		<property name="dao" ref="loganderrorDao"></property>
+	</bean>
+	<bean name="userAction" class="com.speedbook.action.UserAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
 	<aop:aspectj-autoproxy/>	
 	
 </beans>
