@@ -1,10 +1,5 @@
 package com.speedbook.service;
 
-
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.speedbook.dao.UserDao;
 import com.speedbook.model.User;
 

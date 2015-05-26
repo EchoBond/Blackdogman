@@ -6,14 +6,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
+import com.speedbook.daointerface.UserDaoInterface;
 import com.speedbook.model.User;
 
-public class UserDao {
-	private Configuration conf;
-	private ServiceRegistry serviceRegistry;
+public class UserDao implements UserDaoInterface {
 	private SessionFactory sf;
 	private Session sess;
 	private Transaction tx;

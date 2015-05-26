@@ -3,15 +3,11 @@ package com.speedbook.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.speedbook.daointerface.LoganderrorDaoInterface;
 import com.speedbook.model.Loganderror;
 
-public class LoganderrorDao {
+public class LoganderrorDao implements LoganderrorDaoInterface {
 	private SessionFactory sf;
 	private Session sess;
 	private Transaction tx;
