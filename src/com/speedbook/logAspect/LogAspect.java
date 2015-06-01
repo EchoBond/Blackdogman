@@ -26,7 +26,6 @@ public class LogAspect {
 		loganderror.setType("Log");
 		loganderror.setMethod(methodName);
 		loganderror.setVaule(result.toString());
-		loganderror.setError("none");
 		loganderror.setDate(new Date().toString());
 		logService.AddLog(loganderror);
 	}
@@ -34,13 +33,11 @@ public class LogAspect {
 	@AfterThrowing(value="myPointcut()",throwing="e")
 	public void afterThrowing(JoinPoint joinPoint, Exception e){
 		String methodName = joinPoint.getSignature().getName();
-		String error=e.toString();
 		LoganderrorService logService=getLogService();
 		Loganderror loganderror=new Loganderror();
-		loganderror.setType("Error£¡");
+		loganderror.setType("Error!");
 		loganderror.setMethod(methodName);
-		loganderror.setVaule(e.toString());
-		loganderror.setError(error);
+		loganderror.setVaule(e.getMessage());
 		loganderror.setDate(new Date().toString());
 		logService.AddLog(loganderror);
 	}

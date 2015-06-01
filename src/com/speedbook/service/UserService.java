@@ -7,19 +7,19 @@ public class UserService {
 	UserDao dao;
 	public String AddUser(User user){
 		dao.add(user);
-		return "Add "+user;
+		return user.toString();
 	}
-	public String DeleteUser(int id){
+	public int DeleteUser(int id){
 		dao.delete(id);
-		return "Delete with id "+id;
+		return id;
 	}
 	public String UpdateUser(User user){
 		dao.update(user);
-		return "Update "+user;
+		return user.toString();
 	}
-	public String QueryUser(int id){
+	public int QueryUser(int id){
 		dao.Query(id);
-		return "Query with id "+id;
+		return id;
 	}
 	
 	public UserDao getDao() {

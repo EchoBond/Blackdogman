@@ -19,9 +19,6 @@
         <property name="vaule" type="java.lang.String">
             <column name="vaule" length="200" />
         </property>
-        <property name="error" type="java.lang.String">
-            <column name="error" length="200" />
-        </property>
         <property name="date" type="java.lang.String">
             <column name="date" length="50" />
         </property>
