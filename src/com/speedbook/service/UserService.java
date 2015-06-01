@@ -1,5 +1,8 @@
 package com.speedbook.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.speedbook.dao.UserDao;
 import com.speedbook.model.User;
 
@@ -17,9 +20,10 @@ public class UserService {
 		dao.update(user);
 		return user.toString();
 	}
-	public int QueryUser(int id){
-		dao.Query(id);
-		return id;
+	public List<User> QueryUser(int id){
+		List<User> list;
+		list=dao.Query(id);
+		return list;
 	}
 	
 	public UserDao getDao() {

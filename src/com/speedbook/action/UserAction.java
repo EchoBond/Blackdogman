@@ -1,5 +1,7 @@
 package com.speedbook.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -10,6 +12,7 @@ import com.speedbook.service.UserService;
 
 public class UserAction extends ActionSupport {
 	UserService userService;
+	List<User> list;
 	String act;
 	User user;
 	int id;
@@ -18,7 +21,7 @@ public class UserAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		act=request.getParameter("act");
 		if(act.equals("query"))
-			QueryUser(id);
+			list=QueryUser(id);
 		if(act.equals("delete"))
 			DeleteUser(id);
 		if(act.equals("add"))
@@ -27,8 +30,10 @@ public class UserAction extends ActionSupport {
 			UpdateUser(user);
 		return SUCCESS;
 	}
-	private void QueryUser(int id){
-		userService.QueryUser(id);
+	private List<User> QueryUser(int id){
+		List<User> list;
+		list=userService.QueryUser(id);
+		return list;
 	}
 	private void DeleteUser(int id){
 		userService.DeleteUser(id);
@@ -57,6 +62,12 @@ public class UserAction extends ActionSupport {
 	}
 	public UserService getUserService() {
 		return userService;
+	}
+	public List<User> getList() {
+		return list;
+	}
+	public void setList(List<User> list) {
+		this.list = list;
 	}
 	
 	

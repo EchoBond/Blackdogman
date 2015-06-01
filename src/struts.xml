@@ -5,5 +5,27 @@
 		<action name="userAction" class="com.speedbook.action.UserAction">
 			<result>/selectSuccess.jsp</result>
 		</action>
+		
+		<action name="upFile" class="com.speedbook.action.UpAction" method="upload">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedExtensions">txt,excel,ppt,jpg,jpeg,png,gif</param>
+				<param name="maximumSize">1000000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">
+				main.jsp
+			</result>
+			<result name="input">main.jsp</result>
+		</action>
+		
+		<action name="download" class="com.speedbook.action.RelDownLoad">
+			<param name="inputPath">/WEB-INF/image/img1.jpg</param>
+			<result type="stream">
+				<param name="allowedExtensions">jpg,jpeg,png</param>
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="wjc_logo.jpg"</param>
+				<param name="bufferSize">10000000</param>
+			</result>
+		</action>
 	</package>
 </struts>    

@@ -26,24 +26,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <h1>Wow！！！SUCCESS</h1>
    	<table border="1" cellpadding="1" cellspacing="1">
   	<tr>
-   	 	<th>EmpID</th>
-   	 	<th>EmpName</th>
-   	 	<th>DeptId</th>
-   	 	<th>DeptName</th>
+   	 	<th>UserId</th>
+   	 	<th>LoginId</th>
+   	 	<th>LoginPwd</th>
+   	 	<th>UserName</th>
    	</tr>
-   	 <s:iterator value="list"  id="a">
+   	 <s:iterator value="list"  id="l">
    	 	<tr>
    	 		<td>
-   	 			<s:property value="#a.getId()"/>
+   	 			<s:property value="#l.getId()"/>
    	 		</td>	
    	 		<td>
-   	 			<s:property value="#a.getName()"/>
+   	 			<s:property value="#l.getLoginid()"/>
    	 		</td>	
    	 		<td>
-   	 			<s:property value="#a.getDept().getId()"/>
+   	 			<s:property value="#l.getLoginpwd"/>
    	 		</td>	
    	 		<td>
-   	 			<s:property value="#a.getDept().getName()"/>
+   	 			<s:property value="#l.getName()"/>
    	 		</td>	
    	 	</tr>
    	 </s:iterator>

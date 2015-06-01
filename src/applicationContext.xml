@@ -42,11 +42,17 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven  transaction-manager="transactionManager" />
+	<tx:advice id="txAdvice" transaction-manager="transactionManager"></tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* com.speedbook.service.UserService.*(..))" id="txPointCut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+	</aop:config>
 	
 	<!-- 以上是hibernate的配置！！ -->
 	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect">
-	</bean>		
+	</bean>	
+	<bean id="upAspect" class="com.speedbook.logAspect.UpAspect"></bean>	
 	<bean id="userDao" class="com.speedbook.dao.UserDao">
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>		
@@ -59,9 +65,13 @@
 	<bean id="loganderrorService" class="com.speedbook.service.LoganderrorService">
 		<property name="dao" ref="loganderrorDao"></property>
 	</bean>
-	<bean name="userAction" class="com.speedbook.action.UserAction">
+	<bean id="userAction" class="com.speedbook.action.UserAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	<bean id="upAction" class="com.speedbook.action.UpAction">
+		<property name="upDao" ref="upDao"></property>
+	</bean>
+	<bean id="upDao" class="com.speedbook.dao.UpDao"></bean>
 	<aop:aspectj-autoproxy/>	
 	
 </beans>
