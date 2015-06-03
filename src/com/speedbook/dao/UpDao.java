@@ -5,20 +5,38 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.speedbook.model.Upload;
 
 public class UpDao {
-	//获取上传文件,名称必须和表单file控件名相同-->       
+	//获取上传文件           名称必须和表单file控件名相同-->       
     private File uploadfile;  
-
-    //获取上传文件名,命名格式：表单file控件名+FileName(固定)-->      
+    //获取上传文件名       命名格式：表单file控件名+FileName(固定)-->      
     private String uploadfileFileName;  
-
-    //获取上传文件类型,命名格式：表单file控件名+ContentType(固定)   
+    //获取上传文件类型    命名格式：表单file控件名+ContentType(固定)   
     private String uploadfileContentType; 
     
-    public String upload() throws IOException  
+    private SessionFactory sf;
+	private Session sess;
+	private Transaction tx;
+	
+	//用于获取hibernate链接
+		public void getSession(){
+			sess=sf.openSession();
+			tx=sess.beginTransaction();
+		}
+		//执行并销毁链接
+		public void distroy(){
+			tx.commit();
+			sess.close();
+			sf.close();
+		}
+	
+    public String upload(File uploadfile,String uploadfileFileName,String uploadfileContentType) throws IOException  
     {  
             //设置上传文件目录    
             String realpath = ServletActionContext.getServletContext().getRealPath("/File");  
@@ -35,11 +53,21 @@ public class UpDao {
 
                     FileUtils.copyFile(uploadfile,savefile);  
 
-                    //设置request对象值       
-                    ActionContext.getContext().put("message", "上传成功！");  
+                    Upload upload=new Upload();
+                    upload.setName(uploadfileFileName);
+                    upload.setUri(realpath);
+                    getSession();
+                    sess.save(upload);
+                    distroy();
             }  
             return "success";  
-     }  
-  	
-  	
+     }
+	public SessionFactory getSf() {
+		return sf;
+	}
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
+	}
+
+	
 }

@@ -29,12 +29,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="select.jsp">查询</a>
     
     <form action="upFile.action" enctype="multipart/form-data" method="post">  
-     <input name="uploadfile" type="file">  
-     <input type="submit" value="上传">  
+   	 	 <input name="uploadfile" type="file">  
+    	 <input type="submit" value="上传">  
  	</form> 
- 	
- 	 <a href="https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe"	>下载网络资源</a>
- 	 <br/>
- 	 <a href="download.action">下载本地资源</a>
+    <a href="download.action">下载本地资源</a>
   </body>
 </html>

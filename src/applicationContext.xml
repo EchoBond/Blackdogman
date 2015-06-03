@@ -35,7 +35,8 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/speedbook/model/User.hbm.xml</value>
-				<value>com/speedbook/model/Loganderror.hbm.xml</value></list>
+				<value>com/speedbook/model/Loganderror.hbm.xml</value>
+				<value>com/speedbook/model/Upload.hbm.xml</value></list>
 		</property></bean>
 	<!-- 这里居然都配好了事务 -->
 	<bean id="transactionManager"
@@ -52,7 +53,6 @@
 	<!-- 以上是hibernate的配置！！ -->
 	<bean id="logAspect" class="com.speedbook.logAspect.LogAspect">
 	</bean>	
-	<bean id="upAspect" class="com.speedbook.logAspect.UpAspect"></bean>	
 	<bean id="userDao" class="com.speedbook.dao.UserDao">
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>		
@@ -68,10 +68,17 @@
 	<bean id="userAction" class="com.speedbook.action.UserAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	
 	<bean id="upAction" class="com.speedbook.action.UpAction">
-		<property name="upDao" ref="upDao"></property>
+		 <property name="upService" ref="upService"></property> 
 	</bean>
-	<bean id="upDao" class="com.speedbook.dao.UpDao"></bean>
+
+	<bean id="upService" class="com.speedbook.service.UpService">
+		<property name="updao" ref="upDao"></property>
+	</bean>
+	<bean id="upDao" class="com.speedbook.dao.UpDao">
+		<property name="sf" ref="sessionFactory"></property>
+	</bean>
 	<aop:aspectj-autoproxy/>	
 	
 </beans>

@@ -28,6 +28,8 @@ public class UserAction extends ActionSupport {
 			AddUser(user);
 		if(act.equals("update"))
 			UpdateUser(user);
+		if(act==null)
+			throw new Exception("²ÎÊý´íÎó");
 		return SUCCESS;
 	}
 	private List<User> QueryUser(int id){

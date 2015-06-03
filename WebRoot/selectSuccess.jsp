@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
    <body>
    <h1>Wow！！！SUCCESS</h1>
+   <h2>查询</h2>
    	<table border="1" cellpadding="1" cellspacing="1">
   	<tr>
    	 	<th>UserId</th>
@@ -48,5 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	 	</tr>
    	 </s:iterator>
    	</table>
+   	<h2>插入</h2>
+   	<h4>用户名：<s:property value="user.loginid"/></h4>
+  	<h4>姓名：<s:property value="user.name"/></h4>
   </body>
 </html>

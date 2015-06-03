@@ -2,11 +2,19 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="defalut" extends="struts-default">
+	<!--  
+		<global-results>
+			<result name="error">error.jsp</result>
+		</global-results>	
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	-->
 		<action name="userAction" class="com.speedbook.action.UserAction">
 			<result>/selectSuccess.jsp</result>
 		</action>
 		
-		<action name="upFile" class="com.speedbook.action.UpAction" method="upload">
+		<action name="upFile" class="com.speedbook.action.UpAction" >
 			<interceptor-ref name="fileUpload">
 				<param name="allowedExtensions">txt,excel,ppt,jpg,jpeg,png,gif</param>
 				<param name="maximumSize">1000000</param>
